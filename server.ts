@@ -1,17 +1,17 @@
-// const mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/movie-db');
-
 import express from 'express';
 const app = express();
+const PORT = 4000;
+
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/movie-db');
+
 
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));
 
-const PORT = 4000;
+require('./movies/service')(app);
 app.listen(PORT);
-// listen to port 4000
-// require('./movies/service')(app);
-// app.listen(4000);
+
 
 
 
